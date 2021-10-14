@@ -14,7 +14,7 @@ namespace HttpHomework.Repository
         private HttpRequestHelper requestHelper;
         private string token;
 
-        public GitHubApi() : this("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")
+        public GitHubApi() : this("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")
         {
         }
 
