@@ -9,9 +9,14 @@ namespace HttpHomework
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter your github token:");
+            var token = Console.ReadLine();
+            Console.WriteLine("Enter organization name:");
+            var owner = Console.ReadLine();
+
             var committerStatistics = new TopCommittersStatistics(100);
-            var gitHubApi = new GitHubApi();
-            var repos = gitHubApi.GetOrganizationRepos("Twitter");
+            var gitHubApi = new GitHubApi(token);
+            var repos = gitHubApi.GetOrganizationRepos(owner);
             var commitProgressBar = new ProgressBar("Downloading data:", repos.Count, 50);
             commitProgressBar.DrawEmptyProgressBar();
             var commits = repos
@@ -21,11 +26,11 @@ namespace HttpHomework
                     commitProgressBar.NotifyValueChanged(commitProgressBar.CurrentValue + 1);
                     return c;
                 })
-                .SelectMany(list => list.Where(commit => commit.Message.StartsWith("Merge pull request")));
+                .SelectMany(list => list.Where(commit => !commit.Message.StartsWith("Merge pull request")));
             var statistics = committerStatistics.MakeStatistics(commits);
-            Console.WriteLine();
-            foreach (var (email, score) in statistics)
-                Console.WriteLine($"{email}: {score}");
+            Console.WriteLine("\nCommits amount: Email");
+            foreach (var (score, email) in statistics.Reverse())
+                Console.WriteLine($"{score}: {email}");
         }
     }
 }
