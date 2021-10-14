@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vVpG/BGAUWBnXlSLjhgkYR+yOC5RUmLugzAHSsMP04An+AfQBP6er7tBClaW2Uf2orgvDWStpxxlTN7KDacMuQ==",
+  "success": true,
+  "projectFilePath": "D:\\RiderProjects\\HttpHomework\\HttpHomework\\HttpHomework.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zdrav\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
